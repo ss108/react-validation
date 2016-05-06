@@ -43,5 +43,7 @@ By default, Required comes before Email (it has to be there in order to check if
 <MyComp validation={[{rule: Email, priority: 0}, {rule: Required, priority: 10}]} />
 ```
 
-Anyways, the concept will require more thought and code refactoring. Forms are kind of a crappy experience in React, it turns out. But I have had a decent time with this sort of concept in the past.
+Anyways, the concept will require more thought and code refactoring. And I need to add a decorator for the whole form, and probably add other concepts in here as well. 
+
+Forms are kind of a crappy experience in React, it turns out. But I have had a decent time with this sort of concept in the past.
 
