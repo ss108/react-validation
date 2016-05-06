@@ -16,7 +16,7 @@ function _satisfiesRule(thing, ruleSpec){
 
     var args = _getRuleArgs(ruleSpec);
     var ruleClass = ruleSpec.rule;
-    var rule = new ruleClass(...args); //should work 
+    var rule = new ruleClass(...args); //the spread should work. programmatic instantiation def does. spread for ctor args should too. 
 
     var value = thing.validationValue; //anything decorated with "validatable" must implement a getter for this. There is a way to enforce that, will be added later
 
