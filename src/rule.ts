@@ -1,4 +1,4 @@
 export default class Rule {
-    constructor(
+    constructor(){}
 
 }
