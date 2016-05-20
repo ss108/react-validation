@@ -1,0 +1,28 @@
+{
+  "name": "react-validation",
+  "version": "1.0.0",
+  "description": "An extensible and straightforward validation library for React components.",
+  "main": "build/build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ss108/react-validation.git"
+  },
+  "keywords": [
+    "react",
+    "validation"
+  ],
+  "author": "Samier Saeed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ss108/react-validation/issues"
+  },
+  "homepage": "https://github.com/ss108/react-validation#readme",
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10"
+  }
+}
