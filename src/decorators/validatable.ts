@@ -1,3 +1,5 @@
+import Q from "q"
+
 import {objectToArray} from "../utils/utils.ts"
 
 function _getRuleArgs(ruleSpec: any){

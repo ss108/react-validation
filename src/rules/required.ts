@@ -1,7 +1,7 @@
-import Rule from "./rule.ts"
+import IRule from "./rule.ts"
 
 
-export default class Required implements Rule{
+export default class Required implements IRule{
     getDefaultPriority(){
         return 0;
     }

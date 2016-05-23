@@ -1,4 +1,4 @@
-interface Rule {
+interface IRule {
     getDefaultPriority(): number;
 
     makeDefaultErrorMessage(fieldName: string): string;
@@ -6,4 +6,4 @@ interface Rule {
     isSatisfiedBy(value: any): boolean;
 }
 
-export default Rule;
+export default IRule;
