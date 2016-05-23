@@ -1,3 +1,2 @@
-//import Required from "./required.ts"
 
-export {default as Required} from "./required"
+export {default as Required} from "./rules/required"
