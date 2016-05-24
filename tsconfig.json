@@ -9,7 +9,7 @@
         "removeComments": true,
         "rootDir": "src",
         //"outFile": "build/index.js",
-        "outDir": "build",
+        "outDir": "lib",
         "listFiles": true
     }
 
