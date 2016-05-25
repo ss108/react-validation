@@ -31,6 +31,7 @@
   },
   "jest": {
     "scriptPreprocessor":"<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["es6", "js"]
+    "testFileExtensions": ["es6", "js"],
+    "automock": false
   }
 }

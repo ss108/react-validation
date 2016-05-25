@@ -11,6 +11,6 @@ export default class Required implements IRule{
     }
 
     isSatisfiedBy(value: any){
-        return (value !== null) && value.length > 0;
+        return (value !== undefined) && (value !== null) && value.length > 0;
     }
 }
