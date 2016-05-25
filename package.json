@@ -4,7 +4,7 @@
   "description": "An extensible and straightforward validation library for React components.",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,15 @@
   "homepage": "https://github.com/ss108/react-validation#readme",
   "dependencies": {
     "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^12.1.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "jest-cli": "^12.1.1"
+  },
+  "jest": {
+    "scriptPreprocessor":"<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["es6", "js"]
   }
 }
