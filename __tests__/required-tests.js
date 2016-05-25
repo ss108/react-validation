@@ -10,4 +10,14 @@ describe('Required', () =>{
        expect(res).toBe(false);
     });
 
+    it('Should not be satisfied by null', () => {
+        var res = r.isSatisfiedBy(null);
+        expect(res).toBe(false);
+    });
+
+    it('Should not be satisfied by an empty string', () =>{
+        var res = r.isSatisfiedBy("");
+        expect(res).toBe(false);
+    });
+
 });
