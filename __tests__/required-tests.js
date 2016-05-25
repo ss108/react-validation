@@ -1,6 +1,4 @@
-//jest.unmock('../lib/index.js');
-
-import {Required} from "../lib/index.js";
+import {Required} from "../lib";
 
 describe('Required', () =>{
     let r = new Required(); 
