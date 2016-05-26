@@ -8,7 +8,6 @@
         "moduleResolution": "node",
         "removeComments": true,
         "rootDir": "src",
-        //"outFile": "build/index.js",
         "outDir": "lib",
         "listFiles": true
     }
