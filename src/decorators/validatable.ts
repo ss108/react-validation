@@ -1,4 +1,4 @@
-//import Q from "q"
+import Q from "Q"
 import * as React from "react";
 
 import {objectToArray} from "../utils/utils.ts";
@@ -20,7 +20,7 @@ export default function validatable(target: React.Component<any, any>): void{
 
     Object.defineProperty(T, "errors", {
         get: () => {
-            return this.state.validationResults.filter((vr) => {return vr.valid;});
+            return this.state.validationResults.filter((vr: any) => {return vr.valid;});
         },
         enumerable: true
     });
@@ -52,7 +52,7 @@ export default function validatable(target: React.Component<any, any>): void{
                 return null;
             }
 
-            return errors.sort((a, b) =>{
+            return errors.sort((a: any, b: any) =>{
                 return a.priority - b.priority;
             });
         },
@@ -60,7 +60,7 @@ export default function validatable(target: React.Component<any, any>): void{
     });
 
     T._validate = function(ruleSpec: any) : boolean{
-       
+
        var ruleClass = ruleSpec.rule;
        var ruleArgs = _getRuleArgs(ruleSpec);
        var rule = new ruleClass(...ruleArgs);
