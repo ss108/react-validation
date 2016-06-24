@@ -1,99 +1,56 @@
-
-function objectToArray(obj){
-    var collection = Object.keys(obj).map((k) => {
-        return obj[k];
-    });
-
-    return Array.from(collection);
+import { objectToArray } from "../utils/utils.ts";
+function _getRuleArgs(ruleSpec) {
+    return objectToArray(ruleSpec.slice(1));
 }
-
-function _getRuleArgs(ruleSpec){
-    return objectToArray(ruleSpec.slice(1)); //the first prop of the rule spec is the class of the rule
-}
-
-function _satisfiesRule(thing, ruleSpec){
-    var res = false;
-
-    var args = _getRuleArgs(ruleSpec);
-    var ruleClass = ruleSpec.rule;
-    var rule = new ruleClass(...args); //the spread should work. programmatic instantiation def does. spread for ctor args should too. 
-
-    var value = thing.validationValue; //anything decorated with "validatable" must implement a getter for this. There is a way to enforce that, will be added later
-
-    res = rule.isSatisfiedBy(value);
-
-    var fullResult {rule: rule, valid: res} //TODO: class?
-    fullResult.message = ruleSpec.message || rule.makeDefaultErrorMessage(c.props.name, ...args);
-    fullResult.priority = ruleSpec.priority || rule.defaultPriority;
-
-    return fullResult;
-}
-
-function _validate(thing){
-    var d = Q.defer();
-
-    var ruleSpec = c.props.validation;
-
-    var validationResults = ruleSpec.map(_satisfiesRule.bind(null, c));
-
-    c.setState({validationResults: validationResults}, () =>{
-        d.resolve(null);
-    });
-
-    return d.promise;
-}
-
-export default function validatable(target){
-    const type = target.prototype;
-
-    Object.defineProperty(type, "isValidatable", {
-        get: () => {return true;},
-        enumerable: true
-        }
-    );
-
-    Object.defineProperty(type, "errors", {
+export default function validatable(target) {
+    const T = target.prototype;
+    Object.defineProperty(T, "isValidatable", {
         get: () => {
-            this.state.validationResults.filter((vr) => {return vr.valid;});
+            return true;
         },
         enumerable: true
     });
-
-    Object.defineProperty(type, "isValid", {
-        get: () =>{
-           return this.errors.length === 0; 
+    Object.defineProperty(T, "errors", {
+        get: () => {
+            return this.state.validationResults.filter((vr) => { return vr.valid; });
         },
         enumerable: true
     });
-
-    Object.defineProperty(type, "isDirty", {
-        get: function() {
+    Object.defineProperty(T, "isValid", {
+        get: () => {
+            return this.errors.length === 0;
+        },
+        enumerable: true
+    });
+    Object.defineProperty(T, "isDirty", {
+        get: () => {
             return this._dirty || false;
         },
-        set: function(value) {
-            if (! this._dirty) {
+        set: (value) => {
+            if (!this._dirty) {
                 this._dirty = value;
             }
         },
         enumerable: true
     });
-
-    /**
-    * Returns the highest priority error present on a field.
-    */
-    Object.defineProperty(type, "error", {
-        get: function() {
-            var errors = Array.from(this.errors);
-
+    Object.defineProperty(T, "error", {
+        get: () => {
+            var errors = this.errors;
             if (errors.length === 0) {
                 return null;
             }
-
-            return errors.sort((a,b) =>{
-                return a.priority - b.priority; //this is also an untested thing that should theoretically
-            }); 
+            return errors.sort((a, b) => {
+                return a.priority - b.priority;
+            });
         },
         enumerable: true
-    }); 
-
+    });
+    T._validate = function (ruleSpec) {
+        var ruleClass = ruleSpec.rule;
+        var ruleArgs = _getRuleArgs(ruleSpec);
+        var rule = new ruleClass(...ruleArgs);
+        return rule.isSatisfiedBy(this.validationValue);
+    };
+    T.validate = () => {
+    };
 }

@@ -27,8 +27,7 @@
     "babel-jest": "^12.1.0",
     "babel-polyfill": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
-    "jest-cli": "^12.1.1",
-    "typings": "^1.0.4"
+    "jest-cli": "^12.1.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
