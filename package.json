@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/ss108/react-validation#readme",
   "dependencies": {
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-jest": "^12.1.0",
